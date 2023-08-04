@@ -1,21 +1,34 @@
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useFonts } from 'expo-font';
+import { useState } from 'react';
 export default (props) => {
-    const [fontsLoaded] = useFonts ({
-        'LisuBosa-ExtraLight': require ('../assets/fonts/LisuBosa-ExtraLight.ttf'),
-      });
 
-      
+    const [input, setInput] = useState('');
+    const [hidePass, setHidePass] = useState(true);
 
     return(
         <View style={styles.container}>
             <View style={styles.icone} >
-                <Icon name= {props.icon} size={20} color= 'white' /> 
+                <Icon name= {props.ipassword} size={20} color= 'white' /> 
             </View>
             <View style={styles.texto}>
-            <TextInput placeholder = {props.label}  keyboardType='email-address' placeholderTextColor={'white'} color='white' ></TextInput>
+            <TextInput placeholder = {props.labelpass}  
+            placeholderTextColor={'white'} 
+            color='white' 
+            value = {input}
+            onChangeText={(texto) => setInput(texto)} 
+            secureTextEntry={hidePass}
+            />
+             
             </View>
+            <TouchableOpacity style={styles.senhaVisivel} onPress={ () => setHidePass(!hidePass)}>
+            {hidePass ?
+            <Icon name= 'eye' size={20} color= 'white'/> 
+                :
+            <Icon name= 'eye-slash' size={20} color= 'white'/> 
+            }
+                
+            </TouchableOpacity>
         </View>
     );
 }

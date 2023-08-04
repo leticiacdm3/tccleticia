@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   },
 
   imagem: {
-    width: 400,
-    height: 400,
+    width: 200,
+    height: 30,
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
