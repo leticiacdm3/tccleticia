@@ -101,13 +101,13 @@ export default function Login() {
         height: '50%',
         width: '100%',
         marginBottom: 100
-       // paddingBottom: 250
       },
       image:{
         width: 200,
         height: 50,
         resizeMode: 'contain',
-        paddingBottom:300
+        paddingBottom:300,
+        marginTop: 100
       },
       darkbg:{
         backgroundColor: '#6D458B'
