@@ -35,7 +35,7 @@ export default function Login() {
               <Password labelpass= 'SENHA' ipassword= 'lock' />
 
               <TouchableOpacity onPress={()=>setUserMessage(true)} style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>LOGIN</Text>
+                <Text style={styles.loginButtonText}>ENTRAR</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.forgotPassword}>
@@ -49,9 +49,6 @@ export default function Login() {
                 </TouchableOpacity>
                 </View>
         </View>
-    </View>
-    <View style={styles.rodape}>
-
     </View>
     </View>
     </KeyboardAvoidingView>

@@ -12,7 +12,7 @@ export default (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 3,
+        borderWidth: 0.5,
         borderColor: '#D8A7FD',
         borderRadius: 10,
         flexDirection: 'row',
@@ -20,17 +20,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '70%',
         height: '11%',
-        paddingTop: 0,
-        paddingBottom: 1,
-        //marginTop: 20,
+        marginBottom: 5,
         backgroundColor: '#ae7cd4'
     },
 
     texto:{
-        paddingBottom: 0,
         paddingLeft:4,
-        paddingTop:7,
-        paddingBottom:7,
         flex:2,
         selectionColor: 'white',
 
