@@ -22,7 +22,7 @@ export default (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        borderBottomWidth: 1.9,
+        borderBottomWidth: 1,
         borderBottomColor: 'white',
         flexDirection: 'row',
         justifyContent: 'center',
@@ -34,16 +34,12 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 
-    senhaVisivel:{
-        marginLeft:7 
-    },
-
     texto:{
         color: 'white',
         paddingBottom: 0,
         paddingLeft:4,
         paddingTop:3,
-        flex:2,
+        //flex:2,
         selectionColor: 'white'
 
     },

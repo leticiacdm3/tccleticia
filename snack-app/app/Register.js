@@ -1,14 +1,16 @@
 import { StyleSheet, View, Text, TouchableOpacity as TO, ScrollView, KeyboardAvoidingView } from 'react-native';
 import Cadastro from '../components/Cadastro';
-import NomeCadastro from '../components/NomeCadastro';
 import { useFonts } from 'expo-font';
 import Splash from './Splash';
+import { useNavigation } from 'expo-router';
 
 export default function Register(){
     const [fontsLoaded] = useFonts ({
         'Montserrat-Regular': require ('../assets/fonts/Montserrat-Regular.ttf'),
         'LisuBosa-Regular': require ('../assets/fonts/LisuBosa-Regular.ttf'),
       });
+    
+      const nav = useNavigation();
       
       if(fontsLoaded){
     return(
@@ -44,7 +46,7 @@ export default function Register(){
 
                 <View style={styles.naoPossui}>
                     <Text style={styles.notYet}> Já possui conta? </Text>
-                    <TO>
+                    <TO onPress ={() => nav.navigate ('index')}>
                     <Text style={styles.naoPossuiCadastre}>ENTRE</Text>
                     </TO>
                 </View>

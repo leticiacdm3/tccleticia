@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
 import {useState} from 'react';
 import Field from '../components/Field';
 import { useFonts } from 'expo-font';
-import Splash from './Splash';
+import Splash from './Splash'
 import Password from '../components/Password';
+import { useNavigation } from 'expo-router';
+import { emailLogin } from '../auth/emailAuth'; 
 
 export default function Login() {
   const [userMessage, setUserMessage] = useState(false);
+
+  const nav = useNavigation();
+
   const [fontsLoaded] = useFonts ({
     'LisuBosa-Regular': require ('../assets/fonts/LisuBosa-Regular.ttf'),
   });
@@ -14,6 +19,7 @@ export default function Login() {
   if(fontsLoaded){
   return (
     <>
+    
     <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={[styles.darkbg, styles.container]}>
     <View style= {styles.container}>
     <View>
@@ -34,7 +40,15 @@ export default function Login() {
               <Field label='E-MAIL' icon= 'user'/>
               <Password labelpass= 'SENHA' ipassword= 'lock' />
 
-              <TouchableOpacity onPress={()=>setUserMessage(true)} style={styles.loginButton}>
+              <TouchableOpacity 
+              //onPress={()=>setUserMessage(true)} 
+              style={styles.loginButton}
+              onPress={() => {
+                emailLogin(email, pass)
+                console.log(email, pass)
+              }}
+              >
+
                 <Text style={styles.loginButtonText}>ENTRAR</Text>
               </TouchableOpacity>
 
@@ -44,7 +58,7 @@ export default function Login() {
 
               <View style={styles.naoPossui}>
                 <Text style={styles.notYet}>Ainda não possui conta? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress ={() => nav.navigate ('Register')}>
                   <Text style={styles.naoPossuiCadastre}>CADASTRE-SE</Text>
                 </TouchableOpacity>
                 </View>
@@ -52,6 +66,7 @@ export default function Login() {
     </View>
     </View>
     </KeyboardAvoidingView>
+  
 
     </>
     

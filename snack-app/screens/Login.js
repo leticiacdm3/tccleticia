@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, Text, View, Image,TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import {useState} from 'react';
 import Field from '../components/Field';
 import { useFonts } from 'expo-font';
