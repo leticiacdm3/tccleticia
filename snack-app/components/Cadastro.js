@@ -1,10 +1,11 @@
-import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
 export default (props) => {
 
-    return(
+    return (
         <View style={styles.container}>
             <View style={styles.texto}>
-            <TextInput placeholder = {props.label}  paddingLeft={4} placeholderTextColor={'white'} color='white' ></TextInput>
+            <Text style={styles.texti}> {props.label} </Text>
+                <TextInput value={props.text} onChangeText={(text) => props.setText(text)} paddingTop={9} paddingLeft={4} color='white' ></TextInput>
             </View>
         </View>
     );
@@ -17,24 +18,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        width: '70%',
+        width: '80%',
         height: '9%',
-        paddingTop: 0,
-        paddingBottom: 0,
         marginTop: 20,
         marginBottom: 15
     },
 
-    texto:{
+    texto: {
         color: 'white',
-        paddingBottom: 0,
-        //paddingLeft:4,
-        //paddingTop:0,
-        flex:2,
+        flex: 2,
         selectionColor: 'white'
 
-
-
     },
+    texti:{
+        color: 'white',
+        
+    }
 
 })

@@ -1,91 +1,116 @@
-import { StyleSheet, View, Text, TouchableOpacity as TO, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity as TO, ScrollView, KeyboardAvoidingView, } from 'react-native';
+import CheckBox from 'expo-checkbox';
 import Cadastro from '../components/Cadastro';
 import { useFonts } from 'expo-font';
 import Splash from './Splash';
 import { useNavigation } from 'expo-router';
+import { useState } from "react";
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import SenhaCadastro from '../components/SenhaCadastro';
 
-export default function Register(){
-    const [fontsLoaded] = useFonts ({
-        'Montserrat-Regular': require ('../assets/fonts/Montserrat-Regular.ttf'),
-        'LisuBosa-Regular': require ('../assets/fonts/LisuBosa-Regular.ttf'),
-      });
+export default function Register() {
+    const [fontsLoaded] = useFonts({
+        'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+        'LisuBosa-Regular': require('../assets/fonts/LisuBosa-Regular.ttf'),
+    });
+
+    const nav = useNavigation();
+    const [isChecked, setChecked] = useState(false);
+    const [name, setName] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+    const [passC, setPassC] = useState('');
     
-      const nav = useNavigation();
-      
-      if(fontsLoaded){
-    return(
-        <>
-        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
-        <ScrollView>
-            <View style={styles.superior}>
-                <Text style={styles.textCadastro}> CADASTRO </Text>
-            </View>
-            <View style={styles.meio}>
-                
-                <Cadastro label='Digite seu nome:'/>
-                
-                <Cadastro label='Digite seu CPF:'/>
-                
-                <Cadastro label='Digite sua data de nascimento:'/>
-                
-                <Cadastro label='Digite seu e-mail:'/>
-                
-                <Cadastro label='Digite seu celular:'/>
-                
-                <Cadastro label='Digite sua senha:'/>
-                
-                <Cadastro label='Digite sua senha novamente:'/>
-            </View>
-            <View style={styles.rodape}>
-                <TO style={styles.registerButton}>
-                    <Text style={styles.registerButtonText}>
-                        CADASTRAR
-                    </Text>
-                </TO>
-                </View>
 
-                <View style={styles.naoPossui}>
-                    <Text style={styles.notYet}> Já possui conta? </Text>
-                    <TO onPress ={() => nav.navigate ('index')}>
-                    <Text style={styles.naoPossuiCadastre}>ENTRE</Text>
-                    </TO>
-                </View>
-        </ScrollView>
-        </KeyboardAvoidingView>
-        </>
-    );
+    if (fontsLoaded) {
+        return (
+            <>
+                <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={styles.container}>
+                    <ScrollView>
+                        <View style={styles.superior}>
+                            <TO style={styles.voltar}>
+                                <Icon name={'chevron-left'} size={30} color='#AE7CD4' onPress={() => nav.navigate('index')}/>
+                            </TO>
+                            <Text style={styles.textCadastro}> CADASTRO </Text>
+                        </View>
+                        <View style={styles.meio}>
+                            
+                            <Cadastro text={name} setText={setName} label='Digite seu nome:' />
+                            <Cadastro text={cpf} setText={setCpf} label='Digite seu CPF:' />
+                            <Cadastro text={birthDate} setText={setBirthDate} label='Digite sua data de nascimento:' />
+                            <Cadastro text={email} setText={setEmail} label='Digite seu e-mail:' />
+                            <Cadastro text={phone} setText={setPhone} label='Digite seu celular:' />
+
+                            <SenhaCadastro pass={pass} setPass={setPass} labelpass='Digite sua senha:' />
+
+                            <SenhaCadastro pass= {passC} setPass={setPassC} labelpass='Digite sua senha novamente:' />
+                        </View>
+                        <View style={styles.rodape}>
+                            <View style={styles.vTermos}>
+                                <CheckBox
+                                    style={styles.checkbox}
+                                    disabled={false}
+                                    value={isChecked}
+                                    onValueChange={(setChecked)}
+                                />
+                                <Text style={styles.tdu}>Li e concordo com os </Text>
+                                <TO onPress={() => nav.navigate('Termos')}><Text style={styles.termo}>Termos de Uso</Text></TO>
+                            </View>
+                            <TO style={styles.registerButton}>
+                                <Text style={styles.registerButtonText}>
+                                    CADASTRAR
+                                </Text>
+                            </TO>
+                        </View>
+
+                        <View style={styles.naoPossui}>
+                            <Text style={styles.notYet}> Já possui conta? </Text>
+                            <TO onPress={() => nav.navigate('index')}>
+                                <Text style={styles.naoPossuiCadastre}>ENTRE</Text>
+                            </TO>
+                        </View>
+                    </ScrollView>
+                </KeyboardAvoidingView>
+            </>
+        );
+
+    }
+    else {
+        return <Splash />
+    }
 
 }
-            else{
-            return <Splash/>
-            }
-    
-        }
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
-        backgroundColor: '#6D458B'
+        backgroundColor: '#6D458B',
     },
-    
-    superior:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-end',
+
+    superior: {
         paddingBottom: 30,
-        marginTop: 80
+        flexDirection: 'row',
+        marginTop: 30,
+        
     },
-    meio:{
+    meio: {
         flex: 2,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop:80
+        paddingTop: 40,
+        marginRight:30,
+        marginLeft:30,
+        paddingBottom: 40,
+        backgroundColor: '#714990'
     },
-    rodape:{
-        flex:1,
-        marginTop: 100
+    rodape: {
+        flex: 1,
+        marginTop: 50
     },
-    
-    registerButton:{
+
+    registerButton: {
         padding: 4,
         height: 40,
         width: 200,
@@ -96,34 +121,60 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginBottom: 50
     },
-    registerButtonText:{
+    registerButtonText: {
         fontWeight: '400',
-        fontSize:20,
+        fontSize: 20,
         color: '#6D458B',
         textAlign: 'center',
     },
-    textCadastro:{
+    textCadastro: {
         fontSize: 40,
         color: '#00bf63',
         fontFamily: 'Montserrat-Regular',
-        marginBottom: 30
+        marginTop: 30
     },
-    notYet:{
-        fontFamily: 'LisuBosa-Regular',
+    notYet: {
         fontSize: 20,
         color: '#fff'
-      },
-      naoPossuiCadastre:{
+    },
+    naoPossuiCadastre: {
         color: '#00BF63',
-        fontFamily: 'LisuBosa-Regular',
         fontSize: 20,
-      },
-      naoPossui:{
+    },
+    naoPossui: {
         flexDirection: 'row',
         justifyContent: 'center',
         marginBottom: 30
 
-      },
+    },
+    tdu: {
+        color: 'white',
+        fontSize: 15
+
+
+    },
+    termo: {
+        color: '#00BF63',
+        fontSize: 15
+    },
+    vTermos: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+    checkbox: {
+        margin: 8,
+    },
+    voltar: {
+        paddingBottom: 30,
+        JustifyContent: 'left',
+        marginRight: 48,
+        marginLeft:20,
+        height: '100%',
+
+    }
 
 })
 

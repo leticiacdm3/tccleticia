@@ -3,31 +3,32 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useState } from 'react';
 export default (props) => {
 
-    const [input, setInput] = useState('');
     const [hidePass, setHidePass] = useState(true);
 
-    return(
+    return (
         <View style={styles.container}>
             <View style={styles.icone} >
-                <Icon name= {props.ipassword} size={20} color= 'white' /> 
+                <Icon name={props.ipassword} size={20} color='white' />
             </View>
             <View style={styles.texto}>
-            <TextInput placeholder = {props.labelpass}  
-            placeholderTextColor={'white'} 
-            color='white' 
-            value = {input}
-            onChangeText={(texto) => setInput(texto)} 
-            secureTextEntry={hidePass}
-            />
-             
+
+                <TextInput
+                    placeholder={props.labelpass}
+                    placeholderTextColor={'white'}
+                    color='white'
+                    value={props.pass}
+                    onChangeText={(text) => props.setPass(text)}
+                    secureTextEntry={hidePass}
+                />
+
             </View>
-            <TouchableOpacity style={styles.senhaVisivel} onPress={ () => setHidePass(!hidePass)}>
-            {hidePass ?
-            <Icon name= 'eye' size={20} color= 'white'/> 
-                :
-            <Icon name= 'eye-slash' size={20} color= 'white'/> 
-            }
-                
+            <TouchableOpacity style={styles.senhaVisivel} onPress={() => setHidePass(!hidePass)}>
+                {hidePass ?
+                    <Icon name='eye' size={20} color='white' />
+                    :
+                    <Icon name='eye-slash' size={20} color='white' />
+                }
+
             </TouchableOpacity>
         </View>
     );
@@ -47,16 +48,16 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
 
-    senhaVisivel:{
-        marginLeft:7 
+    senhaVisivel: {
+        marginLeft: 7
     },
 
-    texto:{
+    texto: {
         color: 'white',
         paddingBottom: 0,
-        paddingLeft:4,
-        paddingTop:3,
-        flex:2,
+        paddingLeft: 4,
+        paddingTop: 3,
+        flex: 2,
         selectionColor: 'white'
 
     },
