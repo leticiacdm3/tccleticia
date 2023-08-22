@@ -16,7 +16,7 @@ export default function Login() {
   const nav = useNavigation();
 
   const [fontsLoaded] = useFonts({
-    'LisuBosa-Regular': require('../assets/fonts/LisuBosa-Regular.ttf'),
+    'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
 
   const imgSource = require ('../assets/logoescuro.png')
@@ -89,23 +89,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   notYet: {
-    fontSize: 20,
-    color: '#fff'
+    fontSize: 17,
+    color: '#fff',
+    fontFamily: 'Montserrat-Regular'
   },
   naoPossuiCadastre: {
     color: '#00BF63',
-    fontSize: 20,
+    fontSize: 17,
+    fontFamily: 'Montserrat-Regular'
   },
   naoPossui: {
     flexDirection: 'row',
     paddingTop: 100,
-
   },
   forgotPassword: {
     marginTop: 7
   },
   forgotPasswordText: {
-    fontFamily: 'LisuBosa-Regular',
+    fontFamily: 'Montserrat-Regular',
     fontSize: 17,
     color: '#AE7CD4'
   },
@@ -134,18 +135,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 10,
     marginBottom: 0,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontFamily: 'Montserrat-Regular'
   },
   loginForm: {
     width: '80%',
     alignItems: 'center',
-    fontFamily: 'LisuBosa-Regular',
+    fontFamily: 'Montserrat-Regular'
   },
   loginInput: {
     backgroundColor: '#fff',
     fontSize: 20,
     padding: 7,
-    marginBottom: 15
+    marginBottom: 15,
+    fontFamily: 'Montserrat-Regular'
   },
   loginButton: {
     padding: 4,
@@ -163,6 +166,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#6D458B',
     textAlign: 'center',
+    fontFamily: 'Montserrat-Regular',
   }
 
 })

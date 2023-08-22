@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     superior: {
         paddingBottom: 30,
         flexDirection: 'row',
-        marginTop: 30,
+        marginTop: 50,
         
     },
     meio: {
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#6D458B',
         textAlign: 'center',
+        fontFamily: 'Montserrat-Regular'
     },
     textCadastro: {
         fontSize: 40,
@@ -135,34 +136,34 @@ const styles = StyleSheet.create({
     },
     notYet: {
         fontSize: 20,
-        color: '#fff'
+        color: '#fff',
+        fontFamily: 'Montserrat-Regular'
     },
     naoPossuiCadastre: {
         color: '#00BF63',
         fontSize: 20,
+        fontFamily: 'Montserrat-Regular'
     },
     naoPossui: {
         flexDirection: 'row',
         justifyContent: 'center',
         marginBottom: 30
-
     },
     tdu: {
         color: 'white',
-        fontSize: 15
-
-
+        fontSize: 15,
+        fontFamily: 'Montserrat-Regular'
     },
     termo: {
         color: '#00BF63',
-        fontSize: 15
+        fontSize: 15,
+        fontFamily: 'Montserrat-Regular'
     },
     vTermos: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-
     },
     checkbox: {
         margin: 8,

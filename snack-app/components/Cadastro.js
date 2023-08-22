@@ -1,6 +1,13 @@
 import { StyleSheet, View, TextInput, Text } from 'react-native';
+import { useFonts } from 'expo-font';
+
 export default (props) => {
 
+    const [fontsLoaded] = useFonts({
+        'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+    });
+
+    if (fontsLoaded) {
     return (
         <View style={styles.container}>
             <View style={styles.texto}>
@@ -9,7 +16,7 @@ export default (props) => {
             </View>
         </View>
     );
-}
+}}
 
 const styles = StyleSheet.create({
     container: {
@@ -26,13 +33,13 @@ const styles = StyleSheet.create({
 
     texto: {
         color: 'white',
-        flex: 2,
-        selectionColor: 'white'
+        flex: 2
 
     },
     texti:{
         color: 'white',
-        
+        selectionColor: 'white',
+        fontFamily: 'Montserrat-Regular'
     }
 
 })

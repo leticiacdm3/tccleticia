@@ -1,10 +1,15 @@
 import { StyleSheet, View, TextInput, TouchableOpacity, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useState } from 'react';
+import { useFonts } from 'expo-font';
 export default (props) => {
 
     const [hidePass, setHidePass] = useState(true);
+    const [fontsLoaded] = useFonts({
+        'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
+    });
 
+    if (fontsLoaded) {
     return (
         <View style={styles.container}>
             <View style={styles.texto}>
@@ -30,7 +35,7 @@ export default (props) => {
             </TouchableOpacity>
         </View>
     );
-}
+}}
 
 
     const styles = StyleSheet.create({
@@ -54,7 +59,7 @@ export default (props) => {
         },
         texti:{
             color: 'white',
-            
+            fontFamily: 'Montserrat-Regular'
         },
         senhaVisivel: {
             marginLeft: 7,
