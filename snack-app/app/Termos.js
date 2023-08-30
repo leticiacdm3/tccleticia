@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     },
     voltar: {
         paddingBottom: 30,
-        marginRight: 48,
-        marginLeft: 20,
+        marginRight: 50,
+        marginLeft: 30,
         alignSelf: 'left',
         flex: 1,
-        paddingTop: 50
+        paddingTop: 90,
 
     },
     meio: {

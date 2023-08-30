@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     },
     texti:{
         color: 'white',
-        selectionColor: 'white',
         fontFamily: 'Montserrat-Regular'
     }
 

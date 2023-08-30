@@ -8,6 +8,8 @@ import { useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SenhaCadastro from '../components/SenhaCadastro';
 
+
+
 export default function Register() {
     const [fontsLoaded] = useFonts({
         'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -23,8 +25,8 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const [passC, setPassC] = useState('');
+    const [user, setUser] = useState(null)
     
-
     if (fontsLoaded) {
         return (
             <>
@@ -43,9 +45,7 @@ export default function Register() {
                             <Cadastro text={birthDate} setText={setBirthDate} label='Digite sua data de nascimento:' />
                             <Cadastro text={email} setText={setEmail} label='Digite seu e-mail:' />
                             <Cadastro text={phone} setText={setPhone} label='Digite seu celular:' />
-
                             <SenhaCadastro pass={pass} setPass={setPass} labelpass='Digite sua senha:' />
-
                             <SenhaCadastro pass= {passC} setPass={setPassC} labelpass='Digite sua senha novamente:' />
                         </View>
                         <View style={styles.rodape}>
@@ -68,7 +68,7 @@ export default function Register() {
 
                         <View style={styles.naoPossui}>
                             <Text style={styles.notYet}> Já possui conta? </Text>
-                            <TO onPress={() => nav.navigate('index')}>
+                            <TO onPress={() => nav.navigate('Login')}>
                                 <Text style={styles.naoPossuiCadastre}>ENTRE</Text>
                             </TO>
                         </View>
@@ -171,9 +171,10 @@ const styles = StyleSheet.create({
     voltar: {
         paddingBottom: 30,
         JustifyContent: 'left',
-        marginRight: 48,
-        marginLeft:20,
+        marginRight: 40,
+        marginLeft:30,
         height: '100%',
+        paddingTop: 40
 
     }
 
