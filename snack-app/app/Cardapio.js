@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity as TO, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { useNavigation } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useState } from 'react';
+import Casa from './Casa';
 
 export default function Home() {
     const nav = useNavigation();
@@ -17,7 +18,7 @@ export default function Home() {
         <View style={styles.container}>
             <View style={styles.superior}>
                 <TO style={styles.voltar}>
-                    <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Entrar')} />
+                    <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Casa')} />
                 </TO>
                 <Text style={styles.topHome}>HOME</Text>
                 <TO style={styles.user}>
@@ -27,15 +28,15 @@ export default function Home() {
 
             <View style={styles.meio}>
                 <ScrollView>
-                    
+                    <Text>oiiiii</Text>
                 </ScrollView>
             </View>
 
             <View style={styles.inferior}>
-                <TO style={styles.casa}>
+                <TO style={styles.casa} onPress={() => nav.navigate('Home')}>
                     <SimpleLineIcons name={'home'} size={30} color='white' />
                 </TO>
-                <TO style={styles.menu}>
+                <TO style={styles.menu} >
                     <Ionicons name={'fast-food-outline'} size={30} color='white' />
                 </TO>
                 <TO style={styles.dinheiro}>

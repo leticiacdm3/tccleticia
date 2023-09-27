@@ -6,6 +6,7 @@ import Splash from './Splash'
 import Password from '../components/Password';
 import { useNavigation } from 'expo-router';
 import { emailLogin } from '../auth/emailAuth';
+import Casa from './Casa'
 
 export default function Entrar() {
 
@@ -48,7 +49,7 @@ export default function Entrar() {
                   onPress={() => {
                     emailLogin(email, pass)
                     console.log(email, pass)
-                    nav.navigate('Home')
+                    nav.navigate('Casa')
                     setUserMessage(true)
                   }}
                   

@@ -68,7 +68,7 @@ export default function Register() {
 
                         <View style={styles.naoPossui}>
                             <Text style={styles.notYet}> Já possui conta? </Text>
-                            <TO onPress={() => nav.navigate('Login')}>
+                            <TO onPress={() => nav.navigate('Entrar')}>
                                 <Text style={styles.naoPossuiCadastre}>ENTRE</Text>
                             </TO>
                         </View>
