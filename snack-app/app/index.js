@@ -1,51 +1,103 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
+import 'react-native-gesture-handler';
+import { useState } from 'react';
+import { useFonts } from 'expo-font';
+import Splash from './Splash'
+import { useNavigation, useRouter } from 'expo-router';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function Splash() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.superior}>
-      </View>
-      <Image style={styles.imagem} source={require('../assets/logoescuro.png')}/>
-      <View style={styles.inferior}>
-        <Image style= {styles.demarco} source={require('../assets/demarcoEscuro.png')}/>
-      </View>
-    </View>
-  );
+
+
+export default function index() {
+
+  const nav = useNavigation();
+  const [fontsLoaded] = useFonts({
+    'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
+  });
+
+  const imgSource = require('../assets/logoescuro.png')
+
+  if (fontsLoaded && imgSource) {
+    return (
+      <>
+
+        <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={[styles.darkbg, styles.container]}>
+
+          <Text style={styles.snack}>OLÁ</Text>
+          <View style={styles.tela}>
+            <TouchableOpacity style={styles.registerButton} onPress={() => nav.navigate('Register')}>
+              <Text style={styles.registerButtonText}>CADASTRAR</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.enterButton} onPress={() => nav.navigate('Entrar')}>
+              <Text style={styles.enterButtonText}>ENTRAR</Text>
+            </TouchableOpacity>
+
+          </View>
+        </KeyboardAvoidingView>
+
+
+      </>
+
+    );
+  }
+  else {
+    return <Splash />
+  }
 }
-
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
-    backgroundColor: '#6d458b',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  imagem: {
-    width: 200,
-    height: 30,
-    position: 'absolute',
     alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#6D458B'
   },
-
-  demarco: {
-    width: 100,
-    height: 35,
+  snack: {
+    fontFamily: 'Montserrat-Regular',
+    color: '#00BF63',
+    fontSize: 40,
+    paddingTop: 300
+  },
+  registerButton: {
+    padding: 4,
+    height: 40,
+    width: 300,
+    backgroundColor: '#00BF63',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+    alignSelf: 'flex-end',
+    borderRadius: 10
+  },
+  registerButtonText: {
+    fontSize: 20,
+    color: '#6D458B',
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Regular'
+  },
+  enterButton: {
+    padding: 4,
+    height: 40,
+    width: 300,
+    backgroundColor: '#AE7CD4',
+    justifyContent: 'center',
+    alignSelf: 'center',
     marginBottom: 50,
-  },
+    alignSelf: 'flex-end',
+    borderRadius: 10,
 
-  superior: {
-    width: '100%',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-
-  inferior: {
-    width: '100%',
-    flex: 1,
-    alignItems: 'center',
+  enterButtonText: {
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Regular'
+  },
+  tela: {
     justifyContent: 'flex-end',
+    flex: 1
   }
-});
+
+})
