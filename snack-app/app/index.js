@@ -100,4 +100,8 @@ const styles = StyleSheet.create({
     flex: 1
   }
 
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> bd4cf2a6a62ccd49367b35e992974ccf4109a6d2
