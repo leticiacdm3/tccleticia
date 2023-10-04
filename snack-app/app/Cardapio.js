@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity as TO, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation, useRouter } from 'expo-router';
-import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useState } from 'react';
 import Casa from './Casa';
@@ -22,18 +22,21 @@ export default function Home() {
                 </TO>
                 <Text style={styles.topHome}>HOME</Text>
                 <TO style={styles.user}>
+                    <AntDesign name={'shoppingcart'} size={30} color='white'/>
+                </TO>
+                <TO style={styles.userr}>
                     <Icon name={'user'} size={25} color='white' />
                 </TO>
             </View>
 
             <View style={styles.meio}>
                 <ScrollView>
-                    <Text>oiiiii</Text>
+                    
                 </ScrollView>
             </View>
 
             <View style={styles.inferior}>
-                <TO style={styles.casa} onPress={() => nav.navigate('Home')}>
+                <TO style={styles.casa} onPress={() => nav.navigate('Casa')}>
                     <SimpleLineIcons name={'home'} size={30} color='white' />
                 </TO>
                 <TO style={styles.menu} >
@@ -95,7 +98,11 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     user:{
-        paddingLeft: 120,
+        paddingLeft: 70,
+        marginTop: 10,
+        marginRight: 15
+    },
+    userr:{
         marginTop: 10
     },
 });

@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity as TO, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from 'expo-router';
-import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import Cardapio from './Cardapio'
 import { useState } from 'react';
@@ -22,13 +22,16 @@ export default function Home() {
                 </TO>
                 <Text style={styles.topHome}>HOME</Text>
                 <TO style={styles.user}>
+                    <AntDesign name={'shoppingcart'} size={30} color='white'/>
+                </TO>
+                <TO style={styles.userr}>
                     <Icon name={'user'} size={25} color='white' />
                 </TO>
             </View>
 
             <View style={styles.meio}>
                 <ScrollView>
-                    
+                    <Text style={styles.construção}>EM CONSTRUÇÃO</Text>
                 </ScrollView>
             </View>
 
@@ -95,7 +98,14 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     user:{
-        paddingLeft: 120,
+        paddingLeft: 70,
+        marginTop: 10,
+        marginRight: 15
+    },
+    userr:{
         marginTop: 10
     },
+    construção:{
+        color: 'white'
+    }
 });
