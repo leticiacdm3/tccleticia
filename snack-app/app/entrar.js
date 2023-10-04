@@ -5,8 +5,9 @@ import { useFonts } from 'expo-font';
 import Splash from './Splash'
 import Password from '../components/Password';
 import { useNavigation } from 'expo-router';
-import { emailLogin } from '../auth/emailAuth';
-import Casa from './Casa'
+import { emailLogin, auth, createUser, signOutFirebase } from "../connections_leticia/firebase-auth";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from "expo-router";
 
 export default function Entrar() {
 
@@ -14,22 +15,45 @@ export default function Entrar() {
   const [pass, setPass] = useState('');
   const [userMessage, setUserMessage] = useState(false);
 
+  const tryLogin = async () => {
+    const userCredential = await emailLogin(email, pass); //chamada para outro arquivo
+    if (userCredential) {
+
+      console.log(userCredential.user);
+      router.replace("/Casa") //troca para a tela de addDoguinho
+
+    } else {
+      //Tratar quando o usuário errar login e senha
+      //Existem outras opções de erros:
+      //Varias tentativas d login fracassados
+      alert("erro");
+    }
+  }
+
+
+  const trySignOut = async () => {
+    signOutFirebase()
+  }
+
+  const printAuth = () => {
+    console.log(auth.currentUser)
+  }
   const nav = useNavigation();
 
   const [fontsLoaded] = useFonts({
     'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
 
-  const imgSource = require ('../assets/logoescuro.png')
+  const imgSource = require('../assets/logoescuro.png')
 
-  if (fontsLoaded && imgSource) {
+  if (fontsLoaded) {
     return (
       <>
 
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={[styles.darkbg, styles.container]}>
           <View style={styles.container}>
             <View>
-                <Image style={styles.image} source={imgSource} />
+              <Image style={styles.image} source={imgSource} />
             </View>
 
             <View style={styles.inferior}>
@@ -41,8 +65,8 @@ export default function Entrar() {
               </View>
 
               <View style={styles.loginForm}>
-                <Field label='E-MAIL' icon='user' email={email} setEmail={setEmail} />
-                <Password labelpass='SENHA' ipassword='lock' pass={pass} setPass={setPass} />
+                <Field label='E-MAIL' icon='user' value={email} onChangeText={t => setEmail(t)} />
+                <Password labelpass='SENHA' ipassword='lock' value={pass} onChangeText={t => setPass(t)} />
 
                 <TouchableOpacity
                   style={styles.loginButton}
@@ -52,7 +76,7 @@ export default function Entrar() {
                     nav.navigate('Casa')
                     setUserMessage(true)
                   }}
-                  
+
                 >
 
                   <Text style={styles.loginButtonText} >ENTRAR</Text>
@@ -169,6 +193,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Montserrat-Regular',
   },
-  
+
 
 })

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import Splash from './Splash'
 import { useNavigation, useRouter } from 'expo-router';
-import { createStackNavigator } from '@react-navigation/stack';
 
 
 
@@ -29,7 +28,7 @@ export default function index() {
               <Text style={styles.registerButtonText}>CADASTRAR</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.enterButton} onPress={() => nav.navigate('Entrar')}>
+            <TouchableOpacity style={styles.enterButton} onPress={() => {nav.navigate('entrar');console.log('socorroooo')}}>
               <Text style={styles.enterButtonText}>ENTRAR</Text>
             </TouchableOpacity>
 
@@ -100,8 +99,4 @@ const styles = StyleSheet.create({
     flex: 1
   }
 
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> bd4cf2a6a62ccd49367b35e992974ccf4109a6d2

@@ -7,7 +7,9 @@ import { useNavigation } from 'expo-router';
 import { useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import SenhaCadastro from '../components/SenhaCadastro';
-
+import { emailLogin, auth, createUser, signOutFirebase } from "../connections_leticia/firebase-auth";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from "expo-router";
 
 
 export default function Register() {
@@ -26,7 +28,10 @@ export default function Register() {
     const [pass, setPass] = useState('');
     const [passC, setPassC] = useState('');
     const [user, setUser] = useState(null)
-    
+    const tryCreateUser = async () => {
+        createUser(email, pass, "Nome da pessoa");
+      }
+
     if (fontsLoaded) {
         return (
             <>
@@ -40,13 +45,13 @@ export default function Register() {
                         </View>
                         <View style={styles.meio}>
                             
-                            <Cadastro text={name} setText={setName} label='Digite seu nome:' />
-                            <Cadastro text={cpf} setText={setCpf} label='Digite seu CPF:' />
-                            <Cadastro text={birthDate} setText={setBirthDate} label='Digite sua data de nascimento:' />
-                            <Cadastro text={email} setText={setEmail} label='Digite seu e-mail:' />
-                            <Cadastro text={phone} setText={setPhone} label='Digite seu celular:' />
-                            <SenhaCadastro pass={pass} setPass={setPass} labelpass='Digite sua senha:' />
-                            <SenhaCadastro pass= {passC} setPass={setPassC} labelpass='Digite sua senha novamente:' />
+                            <Cadastro label='Digite seu nome:' />
+                            <Cadastro label='Digite seu CPF:' />
+                            <Cadastro label='Digite sua data de nascimento:' />
+                            <Cadastro value={email} onChangeText={setEmail=>(t)} label='Digite seu e-mail:' />
+                            <Cadastro label='Digite seu celular:' />
+                            <SenhaCadastro  value={pass} onChangeText={setPass=>(t)} labelpass='Digite sua senha:' />
+                            <SenhaCadastro labelpass='Digite sua senha novamente:' />
                         </View>
                         <View style={styles.rodape}>
                             <View style={styles.vTermos}>
@@ -59,7 +64,7 @@ export default function Register() {
                                 <Text style={styles.tdu}>Li e concordo com os </Text>
                                 <TO onPress={() => nav.navigate('Termos')}><Text style={styles.termo}>Termos de Uso</Text></TO>
                             </View>
-                            <TO style={styles.registerButton}>
+                            <TO onPress={tryCreateUser} style={styles.registerButton}>
                                 <Text style={styles.registerButtonText}>
                                     CADASTRAR
                                 </Text>
