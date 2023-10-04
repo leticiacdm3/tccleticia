@@ -48,10 +48,10 @@ export default function Register() {
                             <Cadastro label='Digite seu nome:' />
                             <Cadastro label='Digite seu CPF:' />
                             <Cadastro label='Digite sua data de nascimento:' />
-                            <Cadastro value={email} onChangeText={setEmail=>(t)} label='Digite seu e-mail:' />
+                            <Cadastro value={email} setText={setEmail} label='Digite seu e-mail:' />
                             <Cadastro label='Digite seu celular:' />
-                            <SenhaCadastro  value={pass} onChangeText={setPass=>(t)} labelpass='Digite sua senha:' />
-                            <SenhaCadastro labelpass='Digite sua senha novamente:' />
+                            <SenhaCadastro  value={pass} setSenha={setPass} labelpass='Digite sua senha:' />
+                            {/* <SenhaCadastro labelpass='Digite sua senha novamente:' /> */}
                         </View>
                         <View style={styles.rodape}>
                             <View style={styles.vTermos}>

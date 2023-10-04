@@ -3,7 +3,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from 'expo-router';
 import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import Cardapio from './Cardapio'
 import { useState } from 'react';
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
         <View style={styles.container}>
             <View style={styles.superior}>
                 <TO style={styles.voltar}>
-                    <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Entrar')} />
+                    <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('entrar')} />
                 </TO>
                 <Text style={styles.topHome}>HOME</Text>
                 <TO style={styles.user}>

@@ -19,8 +19,8 @@ export default (props) => {
                     paddingLeft={4}
                     placeholderTextColor={'white'}
                     color='white'
-                    value={props.pass}
-                    onChangeText={(text) => props.setPass(text)}
+                    value={props.value}
+                    onChangeText={(text) => props.setSenha(text)}
                     secureTextEntry={hidePass}
                 />
 

@@ -11,16 +11,17 @@ import { router } from "expo-router";
 
 export default function Entrar() {
 
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [email, setEmail] = useState('leticia@gmail.com');
+  const [pass, setPass] = useState('123456');
   const [userMessage, setUserMessage] = useState(false);
 
   const tryLogin = async () => {
-    const userCredential = await emailLogin(email, pass); //chamada para outro arquivo
+    console.log(email, pass)
+    const userCredential = await emailLogin(email, pass);
     if (userCredential) {
 
       console.log(userCredential.user);
-      router.replace("/Casa") //troca para a tela de addDoguinho
+      nav.navigate('Casa')
 
     } else {
       //Tratar quando o usuário errar login e senha
@@ -28,15 +29,7 @@ export default function Entrar() {
       //Varias tentativas d login fracassados
       alert("erro");
     }
-  }
 
-
-  const trySignOut = async () => {
-    signOutFirebase()
-  }
-
-  const printAuth = () => {
-    console.log(auth.currentUser)
   }
   const nav = useNavigation();
 
@@ -65,20 +58,13 @@ export default function Entrar() {
               </View>
 
               <View style={styles.loginForm}>
-                <Field label='E-MAIL' icon='user' value={email} onChangeText={t => setEmail(t)} />
-                <Password labelpass='SENHA' ipassword='lock' value={pass} onChangeText={t => setPass(t)} />
+                <Field label='E-MAIL' icon='user' value={email} setText={setEmail} />
+                <Password labelpass='SENHA' ipassword='lock' value={pass} setSenha={setPass} />
 
                 <TouchableOpacity
                   style={styles.loginButton}
-                  onPress={() => {
-                    emailLogin(email, pass)
-                    console.log(email, pass)
-                    nav.navigate('Casa')
-                    setUserMessage(true)
-                  }}
-
+                  onPress={tryLogin}
                 >
-
                   <Text style={styles.loginButtonText} >ENTRAR</Text>
                 </TouchableOpacity>
 

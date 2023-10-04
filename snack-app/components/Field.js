@@ -14,7 +14,7 @@ export default (props) => {
                 <Icon name={props.icon} size={20} color='white' />
             </View>
             <View style={styles.texto}>
-                <TextInput placeholder={props.label} value={props.email} onChangeText={(text) => props.setEmail(text)} keyboardType='email-address' placeholderTextColor={'white'} color='white' ></TextInput>
+                <TextInput placeholder={props.label} value={props.email} onChangeText={(text) => props.setText(text)} keyboardType='email-address' placeholderTextColor={'white'} color='white' ></TextInput>
             </View>
         </View>
     );
