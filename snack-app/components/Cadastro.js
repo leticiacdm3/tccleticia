@@ -6,17 +6,26 @@ export default (props) => {
     const [fontsLoaded] = useFonts({
         'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf')
     });
-
+    
     if (fontsLoaded) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.texto}>
-            <Text style={styles.texti}> {props.label} </Text>
-                <TextInput value={props.text} onChangeText={(text) => props.setText(text)} paddingTop={9} paddingLeft={4} color='white' ></TextInput>
+        return (
+            <View style={styles.container}>
+                <View style={styles.texto}>
+                    <Text style={styles.texti}> {props.label} </Text>
+                    <TextInput
+                        value={props.text}
+                        onChangeText={(text) => {
+                            props.setText(text);
+                        }}
+                        paddingTop={9}
+                        paddingLeft={4}
+                        color='white'
+                    />
+                </View>
             </View>
-        </View>
-    );
-}}
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -36,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 2
 
     },
-    texti:{
+    texti: {
         color: 'white',
         fontFamily: 'Montserrat-Regular'
     }

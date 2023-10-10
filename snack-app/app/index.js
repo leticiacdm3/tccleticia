@@ -22,7 +22,7 @@ export default function index() {
 
         <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} style={[styles.darkbg, styles.container]}>
 
-          <Text style={styles.snack}>OLÁ</Text>
+          <Text style={styles.snack}>SEJA BEM-VINDO</Text>
           <View style={styles.tela}>
             <TouchableOpacity style={styles.registerButton} onPress={() => nav.navigate('Register')}>
               <Text style={styles.registerButtonText}>CADASTRAR</Text>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   snack: {
     fontFamily: 'Montserrat-Regular',
     color: '#00BF63',
-    fontSize: 40,
+    fontSize: 35,
     paddingTop: 300
   },
   registerButton: {

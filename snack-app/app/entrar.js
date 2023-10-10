@@ -27,12 +27,12 @@ export default function Entrar() {
       //Tratar quando o usuário errar login e senha
       //Existem outras opções de erros:
       //Varias tentativas d login fracassados
-      alert("erro");
+      alert("Usuário ou senha inválido ");
     }
 
   }
   const nav = useNavigation();
-
+  
   const [fontsLoaded] = useFonts({
     'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
