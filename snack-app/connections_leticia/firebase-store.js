@@ -28,7 +28,7 @@ const addUserFirestore = async (userCredential, nome, cpf, telefone, dataNascime
         birth: dataNascimento
     }
     //NESSE CASO, A CHAVE DO DOCUMENTO IGUAL AO USER ID (UID)
-    await setDoc(doc(db, "users", uid), data);
+    await setDoc(doc(db, "usuarios", uid), data);
 }
 
 //EXPORTA AS FUNCOES
