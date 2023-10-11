@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Field from '../components/Field';
 import { useFonts } from 'expo-font';
 import Splash from './Splash'
@@ -33,6 +33,12 @@ export default function Entrar() {
     'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
   const imgSource = require('../assets/logoescuro.png')
+  useEffect(() => {
+    if (auth.currentUser) {
+      console.log(auth.currentUser)
+      nav.navigate('Casa')
+    }
+  }, [])
 
   if (fontsLoaded) {
     return (

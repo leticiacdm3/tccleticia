@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
 import 'react-native-gesture-handler';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import Splash from './Splash'
 import { useNavigation, useRouter } from 'expo-router';
-
+import {auth} from '../connections_leticia/firebase-app';
 
 
 export default function index() {
@@ -15,6 +15,18 @@ export default function index() {
   });
 
   const imgSource = require('../assets/logoescuro.png')
+
+  useEffect(() => {
+    if (auth && auth.currentUser) {
+      console.log(auth().currentUser)
+      nav.navigate('Casa')
+    } 
+  }, [])
+
+  const entrarClicado = () => {
+    
+    nav.navigate('entrar')
+  }
 
   if (fontsLoaded && imgSource) {
     return (
@@ -28,7 +40,7 @@ export default function index() {
               <Text style={styles.registerButtonText}>CADASTRAR</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.enterButton} onPress={() => {nav.navigate('entrar');console.log('socorroooo')}}>
+            <TouchableOpacity style={styles.enterButton} onPress={entrarClicado}>
               <Text style={styles.enterButtonText}>ENTRAR</Text>
             </TouchableOpacity>
 

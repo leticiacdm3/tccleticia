@@ -4,6 +4,8 @@ import { useNavigation } from 'expo-router';
 import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useState } from 'react';
+import { signOut } from 'firebase/auth';
+import { signOutFirebase } from '../connections_leticia/firebase-auth';
 
 export default function Home() {
     const nav = useNavigation();
@@ -12,6 +14,11 @@ export default function Home() {
         'LisuBosa-Regular': require('../assets/fonts/LisuBosa-Regular.ttf'),
     });
 
+    const trySignOut = async () => {
+        signOutFirebase ();
+        nav.navigate('index')
+    };
+
     if (fontsLoaded) {
     return (
         <View style={styles.container}>
@@ -19,18 +26,13 @@ export default function Home() {
                 <TO style={styles.voltar}>
                     <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('entrar')} />
                 </TO>
-                <Text style={styles.topHome}>HOME</Text>
-                <TO style={styles.user}>
-                    <AntDesign name={'shoppingcart'} size={30} color='white'/>
-                </TO>
-                <TO style={styles.userr} onPress={() => nav.navigate('Perfil')}>
-                    <Icon name={'user'} size={25} color='white' />
-                </TO>
             </View>
 
             <View style={styles.meio}>
                 <ScrollView>
-                    <Text style={styles.construção}>EM CONSTRUÇÃO</Text>
+                    <TO onPress={trySignOut}>
+                        <Text style={styles.sair}>SAIR</Text>
+                    </TO>
                 </ScrollView>
             </View>
 
@@ -63,8 +65,8 @@ const styles = StyleSheet.create({
         height: '10%',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        backgroundColor: '#6D458B',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        backgroundColor: '#011837',
     },
     meio: {
         width: '100%',
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     userr:{
         marginTop: 10
     },
-    construção:{
+    sair:{
         color: 'white'
     }
 });
