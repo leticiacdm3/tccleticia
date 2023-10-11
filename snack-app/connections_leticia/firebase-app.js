@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
-    apiKey: "AIzaSyDLxM0LaiGWRJGzPh4XwZncRwadSC8pc5k",
+  apiKey: "AIzaSyDLxM0LaiGWRJGzPh4XwZncRwadSC8pc5k",
   authDomain: "tcc-leticia-b16b1.firebaseapp.com",
   projectId: "tcc-leticia-b16b1",
   storageBucket: "tcc-leticia-b16b1.appspot.com",
@@ -11,4 +11,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export {app}
+export { app }

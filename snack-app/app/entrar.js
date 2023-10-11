@@ -7,14 +7,11 @@ import Password from '../components/Password';
 import { useNavigation } from 'expo-router';
 import { emailLogin, auth, createUser, signOutFirebase } from "../connections_leticia/firebase-auth";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { router } from "expo-router";
 
 export default function Entrar() {
 
-  const [email, setEmail] = useState('leticia@gmail.com');
-  const [pass, setPass] = useState('123456');
-  const [userMessage, setUserMessage] = useState(false);
-
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
   const tryLogin = async () => {
     console.log(email, pass)
     const userCredential = await emailLogin(email, pass);
@@ -32,11 +29,9 @@ export default function Entrar() {
 
   }
   const nav = useNavigation();
-  
   const [fontsLoaded] = useFonts({
     'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
   });
-
   const imgSource = require('../assets/logoescuro.png')
 
   if (fontsLoaded) {
@@ -50,23 +45,32 @@ export default function Entrar() {
             </View>
 
             <View style={styles.inferior}>
-              <View>
+              {/* <View>
                 {
                   userMessage ? <Text style={styles.loginMsg}>Usuário ou senha inválido</Text> : null
                 }
 
-              </View>
+              </View> */}
 
               <View style={styles.loginForm}>
                 <Field label='E-MAIL' icon='user' value={email} setText={setEmail} />
                 <Password labelpass='SENHA' ipassword='lock' value={pass} setSenha={setPass} />
-
+                { email === "" || pass === "" 
+                ? 
+                <TouchableOpacity
+                disabled={true}
+                style={styles.buttonLogin}
+                > 
+                <Text style={styles.buttonLoginText}>ENTRAR</Text>
+                </TouchableOpacity>
+                :
                 <TouchableOpacity
                   style={styles.loginButton}
-                  onPress={tryLogin}
-                >
+                  onPress={tryLogin} >
                   <Text style={styles.loginButtonText} >ENTRAR</Text>
                 </TouchableOpacity>
+                }
+                
 
                 <TouchableOpacity style={styles.forgotPassword}>
                   <Text style={styles.forgotPasswordText}>Esqueceu sua senha?</Text>
@@ -179,6 +183,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Montserrat-Regular',
   },
+  buttonLoginText:{
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#DBD7D7',
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Regular',
+  },
+  buttonLogin:{
+    padding: 4,
+    height: '15%',
+    width: 110,
+    height: 40,
+    backgroundColor: 'gray',
+    justifyContent: 'center',
+    borderRadius: 40,
+    alignSelf: 'center',
+    marginTop: 40,
+  }
+  
+
 
 
 })

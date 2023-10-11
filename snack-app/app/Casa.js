@@ -41,10 +41,10 @@ export default function Home() {
                 <TO style={styles.menu} onPress={() => nav.navigate('Cardapio')}>
                     <Ionicons name={'fast-food-outline'} size={30} color='white' />
                 </TO>
-                <TO style={styles.dinheiro}>
+                <TO style={styles.dinheiro} onPress={() => nav.navigate('Pagamento')}>
                     <FontAwesome name={'dollar'} size={30} color='white' />
                 </TO>
-                <TO style={styles.feedback}>
+                <TO style={styles.feedback} onPress={() => nav.navigate('Feedback')}>
                     <MaterialCommunityIcons name={'account-heart-outline'} size={30} color='white' />
                 </TO>
             </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'black',
+        backgroundColor: '#011837',
     },
 
     inferior: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        backgroundColor: 'black',
+        backgroundColor: '#011837',
         borderTopWidth: 0.5,
         borderTopColor: 'white'
     },

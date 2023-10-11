@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import { useState } from 'react';
 import Casa from './Casa';
 
-export default function Cardapio() {
+export default function Pagamento() {
     const nav = useNavigation();
     const [fontsLoaded] = useFonts({
         'Montserrat-Regular': require('../assets/fonts/Montserrat-Regular.ttf'),
@@ -20,7 +20,7 @@ export default function Cardapio() {
                 <TO style={styles.voltar}>
                     <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Casa')} />
                 </TO>
-                <Text style={styles.topHome}></Text>
+                <Text style={styles.topHome}>Pagamento</Text>
                 <TO style={styles.user}>
                     <AntDesign name={'shoppingcart'} size={30} color='white'/>
                 </TO>
@@ -39,10 +39,10 @@ export default function Cardapio() {
                 <TO style={styles.casa} onPress={() => nav.navigate('Casa')}>
                     <SimpleLineIcons name={'home'} size={30} color='white' />
                 </TO>
-                <TO style={styles.menu} >
+                <TO style={styles.menu} onPress={() => nav.navigate('Cardapio')}>
                     <Ionicons name={'fast-food-outline'} size={30} color='white' />
                 </TO>
-                <TO style={styles.dinheiro} onPress={() => nav.navigate('Pagamento')}>
+                <TO style={styles.dinheiro} >
                     <FontAwesome name={'dollar'} size={30} color='white' />
                 </TO>
                 <TO style={styles.feedback} onPress={() => nav.navigate('Feedback')}>
@@ -93,15 +93,14 @@ const styles = StyleSheet.create({
     topHome:{
         fontFamily: 'Montserrat-Regular',
         fontSize: 30,
-        paddingLeft: 85,
+        paddingLeft: 120,
         color: 'white',
         marginTop: 10
     },
     user:{
-        paddingLeft: 203.4,
+        paddingLeft: 70,
         marginTop: 10,
-        marginRight: 15,
-        
+        marginRight: 15
     },
     userr:{
         marginTop: 10
