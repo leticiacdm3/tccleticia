@@ -26,7 +26,7 @@ const createUser = async (email, pass, name) => {
         .catch((error) => {
             alert("Erro ao criar usuário")
         });
-
+        return userCredential
     //CHAMA FUNCAO EM firebase-store
     //addUserFirestore(userCredential, "Leticia Pedrinho", "123.456.789-00","53 9991730000", "27/07/1996")
 

@@ -10,6 +10,7 @@ import SenhaCadastro from '../components/SenhaCadastro';
 import { emailLogin, auth, createUser, signOutFirebase } from "../connections_leticia/firebase-auth";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SelectList } from 'react-native-dropdown-select-list';
+import { addUserFirestore } from '../connections_leticia/firebase-store';
 
 export default function Register() {
     const [fontsLoaded] = useFonts({
@@ -27,10 +28,17 @@ export default function Register() {
     const [pass, setPass] = useState('');
     const [passC, setPassC] = useState('');
 
+
     const tryCreateUser = async () => {
-        createUser(email, pass);
+       const userCredential = await createUser(email, pass);
+       if (userCredential){
+        console.log(userCredential)
+        addUserFirestore(userCredential, name, cpf, phone, birthDate, estado, perfil)
+        nav.navigate('Casa')
+       }
     }
-    const [selected, setSelected] = useState("");
+
+    const [estado, setEstado] = useState("");
     const data = [
         { key: '1', value: 'Acre', disabled: true },
         { key: '2', value: 'Alagoas' },
@@ -60,7 +68,7 @@ export default function Register() {
         { key: '26', value: 'Sergipe' },
         { key: '27', value: 'Tocantins' },
     ];
-    const [selecionado, setSelecionado] = useState("");
+    const [perfil, setPerfil] = useState("");
     const dados = [
         { key: '1', value: 'Gestor do bar' },
         { key: '2', value: 'Aluno' },
@@ -89,7 +97,7 @@ export default function Register() {
                             <SenhaCadastro value={pass} setSenha={setPass} labelpass='Digite sua senha:' />
                             <SenhaCadastro value={passC} setSenha={setPassC} labelpass='Digite sua senha novamente:' />
                             <SelectList
-                                setSelected={(val) => setSelected(val)}
+                                setSelected={(val) => setEstado(val)}
                                 data={data}
                                 save="key"
                                 placeholder='Selecione seu estado:'
@@ -110,7 +118,7 @@ export default function Register() {
                                 }
                             />
                             <SelectList
-                                setSelected={(val) => setSelecionado(val)}
+                                setSelected={(val) => setPerfil(val)}
                                 data={dados}
                                 save="value"
                                 placeholder='Selecione seu perfil:'
@@ -140,6 +148,7 @@ export default function Register() {
                                 <Text style={styles.tdu}>Li e concordo com os </Text>
                                 <TO onPress={() => nav.navigate('Termos')}><Text style={styles.termo}>Termos de Uso</Text></TO>
                             </View>
+
                             <TO
                                 onPress={() => {tryCreateUser();}}
                                 style={styles.registerButton}>
@@ -147,6 +156,7 @@ export default function Register() {
                                     CADASTRAR
                                 </Text>
                             </TO>
+
                         </View>
                         <View style={styles.naoPossui}>
                             <Text style={styles.notYet}> Já possui conta? </Text>
