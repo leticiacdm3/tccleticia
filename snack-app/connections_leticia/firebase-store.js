@@ -39,3 +39,5 @@ const addUserFirestore = async (userCredential, name, cpf, phone, birthDate, est
 
 //EXPORTA AS FUNCOES
 export {addUserFirestore}
+
+//CRIAR ALUNO, LISTA DE ALUNOS TOCA E VE QNT DEVE AUMENTA OK E ATUALIZA NO BANCO DE DADOS DEIXAR CARDAPIO PRA DEPOIS
