@@ -31,7 +31,10 @@ export default function Cardapio() {
 
             <View style={styles.meio}>
                 <ScrollView>
-                    
+                    <TO style={styles.addLanche}>
+                        <AntDesign name={'pluscircleo'} size={30} color='white'/>
+                        <Text style={styles.addLancheText}> ADICIONAR LANCHES </Text>
+                    </TO>
                 </ScrollView>
             </View>
 
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#011837',
+
     },
 
     inferior: {
@@ -81,9 +85,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        backgroundColor: '#011837',
-        borderTopWidth: 0.5,
-        borderTopColor: 'white'
+        backgroundColor: '#001127',
+
     },
     voltar: {
         alignSelf: 'flex-start',
@@ -106,4 +109,21 @@ const styles = StyleSheet.create({
     userr:{
         marginTop: 10
     },
+    addLanche:{
+        backgroundColor: '#6D458B',
+        width: 250,
+        height: 50,
+        borderRadius: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        marginTop: 280
+    },
+    addLancheText:{
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 15,
+        color: 'white',
+        paddingLeft: 10
+    },
+    
 });

@@ -3,9 +3,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from 'expo-router';
 import { SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
-import { useState } from 'react';
-import { signOut } from 'firebase/auth';
+import { useEffect, useState } from 'react';
 import { signOutFirebase } from '../connections_leticia/firebase-auth';
+import { getPerfilFromUid } from '../connections_leticia/firebase-store';
+import {auth} from '../connections_leticia/firebase-auth';
 
 export default function Home() {
     const nav = useNavigation();
@@ -18,6 +19,17 @@ export default function Home() {
         signOutFirebase ();
         nav.navigate('index')
     };
+    const [perfil, setPerfil] = useState('');
+
+    useEffect(() => {
+        getPerfilFromUid(auth.currentUser.uid)
+        .then((perfil) => {
+            setPerfil(perfil);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }, [])
 
     if (fontsLoaded) {
     return (
@@ -30,25 +42,11 @@ export default function Home() {
 
             <View style={styles.meio}>
                 <ScrollView>
+                    <Text>{perfil && perfil.name}</Text>
                     <TO onPress={trySignOut}>
                         <Text style={styles.sair}>SAIR</Text>
                     </TO>
                 </ScrollView>
-            </View>
-
-            <View style={styles.inferior}>
-                <TO style={styles.casa}>
-                    <SimpleLineIcons name={'home'} size={30} color='white' />
-                </TO>
-                <TO style={styles.menu} onPress={() => nav.navigate('Cardapio')}>
-                    <Ionicons name={'fast-food-outline'} size={30} color='white' />
-                </TO>
-                <TO style={styles.dinheiro} onPress={() => nav.navigate('Pagamento')}>
-                    <FontAwesome name={'dollar'} size={30} color='white' />
-                </TO>
-                <TO style={styles.feedback} onPress={() => nav.navigate('Feedback')}>
-                    <MaterialCommunityIcons name={'account-heart-outline'} size={30} color='white' />
-                </TO>
             </View>
 
         </View>
@@ -83,8 +81,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         backgroundColor: '#011837',
-        borderTopWidth: 0.5,
-        borderTopColor: 'white'
+     
     },
     voltar: {
         alignSelf: 'flex-start',

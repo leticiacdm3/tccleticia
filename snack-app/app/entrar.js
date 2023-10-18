@@ -5,8 +5,8 @@ import { useFonts } from 'expo-font';
 import Splash from './Splash'
 import Password from '../components/Password';
 import { useNavigation } from 'expo-router';
-import { emailLogin, auth, createUser, signOutFirebase } from "../connections_leticia/firebase-auth";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { emailLogin, auth } from "../connections_leticia/firebase-auth";
+
 
 export default function Entrar() {
 

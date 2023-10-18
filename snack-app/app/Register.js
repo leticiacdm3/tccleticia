@@ -28,14 +28,18 @@ export default function Register() {
     const [pass, setPass] = useState('');
     const [passC, setPassC] = useState('');
 
-
     const tryCreateUser = async () => {
-       const userCredential = await createUser(email, pass);
-       if (userCredential){
-        console.log(userCredential)
-        addUserFirestore(userCredential, name, cpf, phone, birthDate, estado, perfil)
-        nav.navigate('Casa')
+       if (pass != passC) {
+        alert('As senhas não coincidem');
+        return;
        }
+       const userCredential = await createUser(email, pass);
+        if (userCredential) {
+            addUserFirestore(userCredential.user.uid, name, cpf, birthDate, phone, email, estado, perfil);
+            nav.navigate('Casa')
+        } else {
+            alert('Erro ao criar usuário');
+        }
     }
 
     const [estado, setEstado] = useState("");

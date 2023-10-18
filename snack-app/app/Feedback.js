@@ -81,9 +81,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        backgroundColor: '#011837',
-        borderTopWidth: 0.5,
-        borderTopColor: 'white'
+        backgroundColor: '#001127',
+
     },
     voltar: {
         alignSelf: 'flex-start',
