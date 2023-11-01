@@ -4,7 +4,6 @@ import { useNavigation, useRouter } from 'expo-router';
 import { AntDesign, SimpleLineIcons, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useFonts } from 'expo-font';
 import { useState } from 'react';
-import Casa from './Casa';
 
 export default function Cardapio() {
     const nav = useNavigation();
@@ -21,17 +20,19 @@ export default function Cardapio() {
                     <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Casa')} />
                 </TO>
                 <Text style={styles.topHome}></Text>
+
                 <TO style={styles.user}>
                     <AntDesign name={'shoppingcart'} size={30} color='white'/>
                 </TO>
                 <TO style={styles.userr}>
-                    <Icon name={'user'} size={25} color='white' />
+                    <Icon name={'user'} size={25} color='white' onPress={() => nav.navigate('Perfil')} />
                 </TO>
+                
             </View>
 
             <View style={styles.meio}>
                 <ScrollView>
-                    <TO style={styles.addLanche}>
+                    <TO style={styles.addLanche} onPress={()=> nav.navigate('AddLanche')}>
                         <AntDesign name={'pluscircleo'} size={30} color='white'/>
                         <Text style={styles.addLancheText}> ADICIONAR LANCHES </Text>
                     </TO>

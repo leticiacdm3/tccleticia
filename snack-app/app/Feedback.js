@@ -20,12 +20,12 @@ export default function Feedback() {
                 <TO style={styles.voltar}>
                     <Icon name={'chevron-left'} size={30} color='white' onPress={() => nav.navigate('Casa')} />
                 </TO>
-                <Text style={styles.topHome}>Feedback</Text>
+                <Text style={styles.topHome}></Text>
                 <TO style={styles.user}>
                     <AntDesign name={'shoppingcart'} size={30} color='white'/>
                 </TO>
                 <TO style={styles.userr}>
-                    <Icon name={'user'} size={25} color='white' />
+                    <Icon name={'user'} size={25} color='white' onPress={() => nav.navigate('Perfil')}/>
                 </TO>
             </View>
 
@@ -92,12 +92,12 @@ const styles = StyleSheet.create({
     topHome:{
         fontFamily: 'Montserrat-Regular',
         fontSize: 30,
-        paddingLeft: 120,
+        paddingLeft: 85,
         color: 'white',
         marginTop: 10
     },
     user:{
-        paddingLeft: 70,
+        paddingLeft: 203.4,
         marginTop: 10,
         marginRight: 15
     },
