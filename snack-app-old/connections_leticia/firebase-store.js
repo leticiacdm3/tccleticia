@@ -1,12 +1,12 @@
 //ARQUIVO PARA ACESSAR O BANCO DE DADOS DO FIREBASE
 
-import { getFirestore, collection, addDoc, setDoc, doc, getDoc} from "firebase/firestore";
+import { getFirestore, collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore";
 import { auth } from "./firebase-auth";
 import { app } from "./firebase-app"
-import {getStorage, ref} from "firebase/storage";
+
 const db = getFirestore(app);
 
-const storage = getStorage(app); 
+
 const addUserFirestore = async (userCredential, name, cpf, phone, birthDate, estado, perfil  ) => {
     const uid = auth.currentUser.uid;
     const data = {
@@ -35,6 +35,6 @@ const getPerfilFromUid = async (uid) => {
 
 
 //EXPORTA AS FUNCOES
-export {addUserFirestore, getPerfilFromUid, getStorage, getFirestore}
+export {addUserFirestore, getPerfilFromUid}
 
 //CRIAR ALUNO, LISTA DE ALUNOS TOCA E VE QNT DEVE AUMENTA OK E ATUALIZA NO BANCO DE DADOS DEIXAR CARDAPIO PRA DEPOIS
