@@ -4,7 +4,8 @@ import { getFirestore, collection, addDoc, setDoc, doc, getDoc} from "firebase/f
 import { auth } from "./firebase-auth";
 import { app } from "./firebase-app"
 import {getStorage, ref} from "firebase/storage";
-const db = getFirestore(app);
+
+export const db = getFirestore(app);
 
 const storage = getStorage(app); 
 const addUserFirestore = async (userCredential, name, cpf, phone, birthDate, estado, perfil  ) => {
@@ -35,6 +36,6 @@ const getPerfilFromUid = async (uid) => {
 
 
 //EXPORTA AS FUNCOES
-export {addUserFirestore, getPerfilFromUid, getStorage, getFirestore}
+export {addUserFirestore, getPerfilFromUid, getStorage, getFirestore, storage}
 
 //CRIAR ALUNO, LISTA DE ALUNOS TOCA E VE QNT DEVE AUMENTA OK E ATUALIZA NO BANCO DE DADOS DEIXAR CARDAPIO PRA DEPOIS

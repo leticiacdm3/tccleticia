@@ -3,19 +3,22 @@ import {
     Text,
     StyleSheet,
     View,
-    Button,
     TouchableOpacity,
 } from "react-native";
-import {BlurView, VibrancyView} from "@react-native-community/blur";
 import ProgressBar from "./ProgressBar";
 
-export  function Uploading ({image, video, progress}){
+export  function Uploading ({image, progress}){
     return(
-        <View style={[StyleSheet.absoluteFill, {
+        <View 
+        style={[
+            StyleSheet.absoluteFill, 
+            {
             alignItems: 'center', 
             justifyContent: 'center',
             zIndex: 1,
-        }]}>
+        },
+        ]}
+        >
             <View style={styles.viu }>
                 {image && (
                     <Image
@@ -36,8 +39,8 @@ export  function Uploading ({image, video, progress}){
                         borderWidth: StyleSheet.hairlineWidth,
                         width: '100%',
                         borderColor: '#00000020',
-                    }}>
-                </View>
+                    }}
+                    />
                 <TouchableOpacity>
                     <Text style={{ fontWeight: '500', color: '#3478F6', fontSize: 17}}> Cancelar</Text>
                 </TouchableOpacity>
